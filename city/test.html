@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head></head>
+
+    <body>
+        <canvas id="canvas"></canvas>
+
+        <script>
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const w = canvas.width, h = canvas.height;
+
+            let l1 = {y: 100, slope: Math.tan(Math.random() * -(2 * Math.PI))};
+            let l2 = {y: h, slope: Math.tan(Math.random() * -(2 * Math.PI))};
+            let r = Math.sqrt(w*w + h*h);
+
+            ctx.beginPath();
+            ctx.moveTo(0, l1.y);
+            ctx.lineTo(w, w * l1.slope);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0, l2.y);
+            ctx.lineTo(w, w * l2.slope);
+            ctx.stroke();
+           
+            let gridSeeds = [];
+            for (let i = 0; i < 100; i++) gridSeeds.push({x: Math.cos(2 * Math.PI / i) * r, y: Math.sin(2 * Math.PI / i) * r});
+            //choose rand point
+            //pair parallel points,
+            
+            for (let i = 0; i < w; i += 10) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                //ctx.lineTo(i, l.y + Math.tan(l.theta) * i/* y constraint */);
+                ctx.stroke();
+            }
+            
+        </script>
+
+    </body>
+</html>
